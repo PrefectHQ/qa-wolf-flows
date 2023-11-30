@@ -7,10 +7,10 @@ name: qa-wolf-flows
 prefect-version: v2.14.6
 
 # build section allows you to manage and build docker images
-build: null
+build:
 
 # push section allows you to manage if and how this project is uploaded to remote locations
-push: null
+push:
 
 # pull section allows you to provide instructions for cloning this project in remote locations
 pull:
@@ -21,7 +21,7 @@ pull:
 # the deployments section allows you to provide configuration for deploying flows
 deployments:
 - name: oneTask
-  version: null
+  version:
   tags: []
   description: "### Basic hello world flow\n```python\nfrom prefect import flow, task\n\
     \n@task(log_prints=True)\ndef long_long_long_long_long_name(name):\n    print(\"\
@@ -32,6 +32,47 @@ deployments:
   parameters: {}
   work_pool:
     name: prefect-managed
-    work_queue_name: null
+    work_queue_name:
     job_variables: {}
-  schedule: null
+  schedule:
+- name: artifacts
+  version:
+  tags: []
+  description: "Flow that creates markdown, link and table artifacts\n    \n## Flow\
+    \ code\n```python\nfrom prefect import flow, task\nfrom prefect.artifacts import\
+    \ create_markdown_artifact, create_link_artifact, create_table_artifact\n\n@task\n\
+    def my_first_link_task():\n        create_link_artifact(\n            key=\"variable-data-link\"\
+    ,\n            link=\"https://nyc3.digitaloceanspaces.com/my-bucket-name/highly_variable_data_.csv\"\
+    ,\n            description=\"## Highly variable data\",\n            link_text=\"\
+    Highly variable data\",\n        )\n\n@task\ndef my_second_link_task():\n    \
+    \    create_link_artifact(\n            key=\"variable-data-link\",\n        \
+    \    link=\"https://nyc3.digitaloceanspaces.com/my-bucket-name/low_pred_data_.csv\"\
+    ,\n            description=\"# Low prediction accuracy data\",\n        )\n@task\n\
+    def my_table_task():\n    highest_churn_possibility = [\n       {'customer_id':'12345',\
+    \ 'name': 'John Smith', 'churn_probability': 0.85 }, \n       {'customer_id':'56789',\
+    \ 'name': 'Jane Jones', 'churn_probability': 0.65 } \n    ]\n\n    create_table_artifact(\n\
+    \        key=\"personalized-reachout\",\n        table=highest_churn_possibility,\n\
+    \        description= \"# Marvin, please reach out to these customers today!\"\
+    \n    )\n    \n@task\ndef markdown_task():\n    na_revenue = 500000\n    markdown_report\
+    \ = f\"\"\"# Sales Report\n\n## Summary\n\nIn the past quarter, our company saw\
+    \ a significant increase in sales, with a total revenue of $1,000,000. This represents\
+    \ a 20% increase over the same period last year.\n\n## Sales by Region\n\n| Region\
+    \        | Revenue |\n|:--------------|-------:|\n| North America | ${na_revenue:,}\
+    \ |\n| Europe        | $250,000 |\n| Asia          | $150,000 |\n| South America\
+    \ | $75,000 |\n| Africa        | $25,000 |\n\n## Top Products\n\n1. Product A\
+    \ - $300,000 in revenue\n2. Product B - $200,000 in revenue\n3. Product C - $150,000\
+    \ in revenue\n\n## Conclusion\n\nOverall, these results are very encouraging and\
+    \ demonstrate the success of our sales team in increasing revenue across all regions.\
+    \ However, we still have room for improvement and should focus on further increasing\
+    \ sales in the coming quarter.\n\"\"\"\n    create_markdown_artifact(\n      \
+    \  key=\"gtm-markdown-report\",\n        markdown=markdown_report,\n        description=\"\
+    Quarterly Sales Report\",\n    )\n\n@flow()\ndef artifacts_flow():\n    markdown_task()\n\
+    \    my_first_link_task()\n    my_second_link_task()\n    my_table_task()\n  \
+    \  \n```\n    "
+  entrypoint: __pycache__/artifacts.py:artifacts_flow
+  parameters: {}
+  work_pool:
+    name: prefect-managed
+    work_queue_name:
+    job_variables: {}
+  schedule:
