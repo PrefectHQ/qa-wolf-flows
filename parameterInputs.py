@@ -171,5 +171,3 @@ def mainPydantic(
     
     print(f"{pydantic_fields_default_defaults=}")
 
-if __name__ == "__main__":
-    parameterDisplays.serve(name="aparambar")
