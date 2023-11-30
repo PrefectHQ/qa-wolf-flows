@@ -27,3 +27,6 @@ def basic_flow(name:str="world"):
     print("hello", name)
     return 'hello'
 
+
+if __name__ == '__main__':
+    basic_flow.serve(name='world')

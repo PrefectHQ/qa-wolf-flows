@@ -1,0 +1,25 @@
+# Ignore compiled Python files
+*.pyc
+
+# Ignore virtual environment directories
+venv/
+env/
+
+# Ignore IDE and editor files
+.vscode/
+.idea/
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+
+# Ignore package build directories
+dist/
+build/
+
+# Ignore local development settings
+.env
+
+# Ignore sensitive or private information
+secrets.txt
+credentials.json
