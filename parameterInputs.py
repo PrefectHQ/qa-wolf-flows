@@ -1,21 +1,13 @@
 import datetime
-from typing import Dict, List, Optional, Set, Tuple
+from typing import Dict, List, Optional, Set, 
+from enum import Enum
 
 from prefect import flow
 from pydantic import BaseModel, Field, Json
 
-complex_object=[
-            {
-                "foo": "foo1",
-                "bar": "bar1",
-                "foo_bar": "foo_bar1"
-            },
-            {
-                "foo": "foo2",
-                "bar": "bar2",
-                "foo_bar": "foo_bar2"
-            }
-        ]
+class FruitEnum(str, Enum):
+    pear = 'pear'
+    banana = 'banana'
 
 class PydanticFieldsDefault(BaseModel): 
 
@@ -74,11 +66,11 @@ class PydanticFieldsDefault(BaseModel):
         description="Description json_field_default",
         default='{"name":"John", "age":30, "car":null}',
     )
-    complex_object: Optional[List[Dict[str, str]]] = Field(
-                title="complex_object",
-                default=complex_object,
-            )
-
+    enum_field_default: Optional[FruitEnum] = Field(
+        title="Title enum_field_default",
+        description="Description enum_field_default",
+        default=FruitEnum.pear,
+    )
 
 @flow(log_prints=True)
 def parameterDisplays(
@@ -153,10 +145,11 @@ class PydanticFieldsDefault(BaseModel):
         description="Description json_field_default",
         default='{"name":"John", "age":30, "car":null}',
     )
-    complex_object: Optional[List[Dict[str, str]]] = Field(
-                title="some_complex_object",
-                default=complex_object,
-            )
+    enum_field_default: Optional[FruitEnum] = Field(
+        title="Title enum_field_default",
+        description="Description enum_field_default",
+        default=FruitEnum.pear,
+    )
 
 
 @flow(name="Pydantic Fields Default")
