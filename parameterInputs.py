@@ -1,7 +1,6 @@
 import datetime
-from typing import Dict, List, Optional, Set, 
+from typing import Dict, List, Optional, Set
 from enum import Enum
-
 from prefect import flow
 from pydantic import BaseModel, Field, Json
 
