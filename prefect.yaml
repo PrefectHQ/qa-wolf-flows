@@ -121,8 +121,7 @@ deployments:
     \    )\n\n\n@flow(name=\"Pydantic Fields Default\")\ndef mainPydantic(\n    pydantic_fields_default_defaults:
     PydanticFieldsDefault = PydanticFieldsDefault(),\n) -> None:\n    logger = get_run_logger()\n\
     \    logger.info(f\"{pydantic_fields_default_defaults=}\")\n\n```\n    "
-  entrypoint: 
-    /Users/jennifer/Desktop/Prefect/qa-wolf-flows/parameterInputs.py:parameterDisplays
+  entrypoint: parameterInputs.py:parameterDisplays
   parameters: {}
   work_pool:
     name: prefect-managed
