@@ -4,7 +4,7 @@
 
 # Generic metadata about this project
 name: qa-wolf-flows
-prefect-version: v2.14.6
+prefect-version: 2.14.8
 
 # build section allows you to manage and build docker images
 build:
@@ -69,10 +69,11 @@ deployments:
     Quarterly Sales Report\",\n    )\n\n@flow()\ndef artifacts_flow():\n    markdown_task()\n\
     \    my_first_link_task()\n    my_second_link_task()\n    my_table_task()\n  \
     \  \n```\n    "
-  entrypoint: __pycache__/artifacts.py:artifacts_flow
+  entrypoint: artifacts.py:artifacts_flow
   parameters: {}
   work_pool:
     name: prefect-managed
     work_queue_name:
     job_variables: {}
   schedule:
+
