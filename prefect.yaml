@@ -131,11 +131,24 @@ deployments:
 - name: automation-test-root
   version:
   tags: []
-  description: "### Basic hello world flow\n```python\nfrom prefect import flow, task\n\
-    \n@task(log_prints=True)\ndef long_long_long_long_long_name(name):\n    print(\"\
-    hello again\", name)\n    return \"hello again\"\n\n@flow(log_prints=True)\ndef\
-    \ basic_flow(name:str=\"world\"):\n    long_long_long_long_long_name()\n    print(\"\
-    hello\", name)\n    return 'hello'\n```\n    "
+  description:
+  entrypoint: sleepTaskFlow.py:sleep_task_flow
+  parameters: {}
+  work_pool:
+    name: prefect-managed
+    work_queue_name:
+    job_variables: {}
+  schedule:
+- name: automation-test-root
+  version:
+  tags: []
+  description: "### Sleep task flow\n```python\nfrom prefect import flow, task\nfrom\
+    \ prefect import time\n\n@task(log_prints=True)\ndef name_task(name):\n    print(\"\
+    hello again\", name)\n    return \"hello again\"\n\n@task(log_prints=True)\ndef\
+    \ sleep_task(sleepLength:int=10):\n    time.sleep(sleepLength)\n    print(\"slept\"\
+    )\n    return \"slept\"\n\n@flow(log_prints=True)\ndef sleep_task_flow(name:str=\"\
+    world\"sleepLength:int=10):\n    name_task()\n    print(\"hello\", name)\n   \
+    \ return 'hello'\n```\n    "
   entrypoint: sleepTaskFlow.py:sleep_task_flow
   parameters: {}
   work_pool:
