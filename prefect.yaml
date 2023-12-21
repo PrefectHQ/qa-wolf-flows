@@ -315,3 +315,14 @@ deployments:
     work_queue_name:
     job_variables: {}
   schedule:
+- name: subFlows
+  version:
+  tags: []
+  description:
+  entrypoint: parentChildFlow.py:main_flow
+  parameters: {}
+  work_pool:
+    name: prefect-managed
+    work_queue_name:
+    job_variables: {}
+  schedule:
