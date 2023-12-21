@@ -14,18 +14,25 @@ def sleep_task(sleepLength:int=10):
 
 @flow(log_prints=True)
 def sleep_task_flow(name:str="world", sleepLength:int=10):
-    '''### Basic hello world flow
+    '''### Sleep task flow
 ```python
 from prefect import flow, task
+from prefect import time
 
 @task(log_prints=True)
-def long_long_long_long_long_name(name):
+def name_task(name):
     print("hello again", name)
     return "hello again"
 
+@task(log_prints=True)
+def sleep_task(sleepLength:int=10):
+    time.sleep(sleepLength)
+    print("slept")
+    return "slept"
+
 @flow(log_prints=True)
-def basic_flow(name:str="world"):
-    long_long_long_long_long_name()
+def sleep_task_flow(name:str="world"sleepLength:int=10):
+    name_task()
     print("hello", name)
     return 'hello'
 ```
