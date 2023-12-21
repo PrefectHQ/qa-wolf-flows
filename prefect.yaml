@@ -23,10 +23,10 @@ deployments:
 - name: oneTask
   version:
   tags: []
-  description: "### Basic hello world flow\n```python\nfrom prefect import flow, task\n
-    \n@task(log_prints=True)\ndef long_long_long_long_long_name(name):\n    print(\"\
-    hello again\", name)\n    return \"hello again\"\n\n@flow(log_prints=True)\ndef
-    basic_flow(name:str=\"world\"):\n    long_long_long_long_long_name()\n    print(\"\
+  description: "### Basic hello world flow\n```python\nfrom prefect import flow, task\n\
+    \ \n@task(log_prints=True)\ndef long_long_long_long_long_name(name):\n    print(\"\
+    hello again\", name)\n    return \"hello again\"\n\n@flow(log_prints=True)\ndef\
+    \ basic_flow(name:str=\"world\"):\n    long_long_long_long_long_name()\n    print(\"\
     hello\", name)\n    return 'hello'\n```\n    "
   entrypoint: simpleFlowWithTasks.py:basic_flow
   parameters: {}
@@ -38,34 +38,34 @@ deployments:
 - name: artifacts
   version:
   tags: []
-  description: "Flow that creates markdown, link and table artifacts\n    \n## Flow
-    code\n```python\nfrom prefect import flow, task\nfrom prefect.artifacts import
-    create_markdown_artifact, create_link_artifact, create_table_artifact\n\n@task\n
-    def my_first_link_task():\n        create_link_artifact(\n            key=\"variable-data-link\"\
-    ,\n            link=\"https://nyc3.digitaloceanspaces.com/my-bucket-name/highly_variable_data_.csv\"\
+  description: "Flow that creates markdown, link and table artifacts\n    \n## Flow\
+    \ code\n```python\nfrom prefect import flow, task\nfrom prefect.artifacts import\
+    \ create_markdown_artifact, create_link_artifact, create_table_artifact\n\n@task\n\
+    \ def my_first_link_task():\n        create_link_artifact(\n            key=\"\
+    variable-data-link\",\n            link=\"https://nyc3.digitaloceanspaces.com/my-bucket-name/highly_variable_data_.csv\"\
     ,\n            description=\"## Highly variable data\",\n            link_text=\"\
     Highly variable data\",\n        )\n\n@task\ndef my_second_link_task():\n    \
     \    create_link_artifact(\n            key=\"variable-data-link\",\n        \
     \    link=\"https://nyc3.digitaloceanspaces.com/my-bucket-name/low_pred_data_.csv\"\
-    ,\n            description=\"# Low prediction accuracy data\",\n        )\n@task\n
-    def my_table_task():\n    highest_churn_possibility = [\n       {'customer_id':'12345',
-    'name': 'John Smith', 'churn_probability': 0.85 }, \n       {'customer_id':'56789',
-    'name': 'Jane Jones', 'churn_probability': 0.65 } \n    ]\n\n    create_table_artifact(\n\
+    ,\n            description=\"# Low prediction accuracy data\",\n        )\n@task\n\
+    \ def my_table_task():\n    highest_churn_possibility = [\n       {'customer_id':'12345',\
+    \ 'name': 'John Smith', 'churn_probability': 0.85 }, \n       {'customer_id':'56789',\
+    \ 'name': 'Jane Jones', 'churn_probability': 0.65 } \n    ]\n\n    create_table_artifact(\n\
     \        key=\"personalized-reachout\",\n        table=highest_churn_possibility,\n\
     \        description= \"# Marvin, please reach out to these customers today!\"\
-    \n    )\n    \n@task\ndef markdown_task():\n    na_revenue = 500000\n    markdown_report
-    = f\"\"\"# Sales Report\n\n## Summary\n\nIn the past quarter, our company saw
-    a significant increase in sales, with a total revenue of $1,000,000. This represents
-    a 20% increase over the same period last year.\n\n## Sales by Region\n\n| Region\
-    \        | Revenue |\n|:--------------|-------:|\n| North America | ${na_revenue:,}
-    |\n| Europe        | $250,000 |\n| Asia          | $150,000 |\n| South America
-    | $75,000 |\n| Africa        | $25,000 |\n\n## Top Products\n\n1. Product A -
-    $300,000 in revenue\n2. Product B - $200,000 in revenue\n3. Product C - $150,000
-    in revenue\n\n## Conclusion\n\nOverall, these results are very encouraging and
-    demonstrate the success of our sales team in increasing revenue across all regions.
-    However, we still have room for improvement and should focus on further increasing
-    sales in the coming quarter.\n\"\"\"\n    create_markdown_artifact(\n        key=\"\
-    gtm-markdown-report\",\n        markdown=markdown_report,\n        description=\"\
+    \n    )\n    \n@task\ndef markdown_task():\n    na_revenue = 500000\n    markdown_report\
+    \ = f\"\"\"# Sales Report\n\n## Summary\n\nIn the past quarter, our company saw\
+    \ a significant increase in sales, with a total revenue of $1,000,000. This represents\
+    \ a 20% increase over the same period last year.\n\n## Sales by Region\n\n| Region\
+    \        | Revenue |\n|:--------------|-------:|\n| North America | ${na_revenue:,}\
+    \ |\n| Europe        | $250,000 |\n| Asia          | $150,000 |\n| South America\
+    \ | $75,000 |\n| Africa        | $25,000 |\n\n## Top Products\n\n1. Product A\
+    \ - $300,000 in revenue\n2. Product B - $200,000 in revenue\n3. Product C - $150,000\
+    \ in revenue\n\n## Conclusion\n\nOverall, these results are very encouraging and\
+    \ demonstrate the success of our sales team in increasing revenue across all regions.\
+    \ However, we still have room for improvement and should focus on further increasing\
+    \ sales in the coming quarter.\n\"\"\"\n    create_markdown_artifact(\n      \
+    \  key=\"gtm-markdown-report\",\n        markdown=markdown_report,\n        description=\"\
     Quarterly Sales Report\",\n    )\n\n@flow()\ndef artifacts_flow():\n    markdown_task()\n\
     \    my_first_link_task()\n    my_second_link_task()\n    my_table_task()\n  \
     \  \n```\n    "
@@ -79,49 +79,64 @@ deployments:
 - name: parameter-input
   version:
   tags: []
-  description: "Flow to test display of Pydantic fields with default values\n    \n
-    #Flow code\n\n```python\nimport datetime\nfrom typing import Dict, List, Optional,
-    Set, Tuple\n\nfrom prefect import flow, get_run_logger\nfrom pydantic import UUID4,
-    BaseModel, Field, Json\n\n\nclass PydanticFieldsDefault(BaseModel): \n\n    bool_field_default:
-    Optional[bool] = Field(\n        title=\"Title bool_field_default\", description=\"\
-    Description bool_field_default\", default=True\n    )\n    int_field_default:
-    Optional[int] = Field(\n        title=\"Title int_field_default\", description=\"\
-    Description int_field_default\", default=42\n    )\n    float_field_default: Optional[float]
-    = Field(\n        title=\"Title float_field_default\", description=\"Description
-    float_field_default\", default=1.23\n    )\n    str_field_default: Optional[str]
-    = Field(\n        title=\"Title str_field_default\", description=\"Description
-    str_field_default\", default=\"default\"\n    )\n    list_field_default: Optional[List[str]]
-    = Field(\n        title=\"Title list_field_default\",\n        description=\"
-    Description list_field_default\",\n        default=[\"default\", \"default\",
-    \"default\"],\n    )\n    #tuple inputs currently not supported - can be done
-    via json\n    # tuple_field_default: Optional[Tuple[str, str]] = Field(\n    #\
-    \     title=\"Title tuple_field_default\",\n    #     description=\"Description
-    tuple_field_default\",\n    #     default=(\"default\", \"default\"),\n    # )\n\
-    \    dict_field_default: Optional[Dict[str, str]] = Field(\n        title=\"Title
-    dict_field_default\", description=\"Description dict_field_default\", default={\"\
+  description: "Flow to test display of Pydantic fields with default values\n    \n\
+    \ #Flow code\n\n```python\nimport datetime\nfrom typing import Dict, List, Optional,\
+    \ Set, Tuple\n\nfrom prefect import flow, get_run_logger\nfrom pydantic import\
+    \ UUID4, BaseModel, Field, Json\n\n\nclass PydanticFieldsDefault(BaseModel): \n\
+    \n    bool_field_default: Optional[bool] = Field(\n        title=\"Title bool_field_default\"\
+    , description=\"Description bool_field_default\", default=True\n    )\n    int_field_default:\
+    \ Optional[int] = Field(\n        title=\"Title int_field_default\", description=\"\
+    Description int_field_default\", default=42\n    )\n    float_field_default: Optional[float]\
+    \ = Field(\n        title=\"Title float_field_default\", description=\"Description\
+    \ float_field_default\", default=1.23\n    )\n    str_field_default: Optional[str]\
+    \ = Field(\n        title=\"Title str_field_default\", description=\"Description\
+    \ str_field_default\", default=\"default\"\n    )\n    list_field_default: Optional[List[str]]\
+    \ = Field(\n        title=\"Title list_field_default\",\n        description=\"\
+    \ Description list_field_default\",\n        default=[\"default\", \"default\"\
+    , \"default\"],\n    )\n    #tuple inputs currently not supported - can be done\
+    \ via json\n    # tuple_field_default: Optional[Tuple[str, str]] = Field(\n  \
+    \  #     title=\"Title tuple_field_default\",\n    #     description=\"Description\
+    \ tuple_field_default\",\n    #     default=(\"default\", \"default\"),\n    #\
+    \ )\n    dict_field_default: Optional[Dict[str, str]] = Field(\n        title=\"\
+    Title dict_field_default\", description=\"Description dict_field_default\", default={\"\
     name\": \"default\"}\n    )\n    set_field_default: Optional[Set[str]] = Field(\n\
-    \        title=\"Title set_field_default\",\n        description=\"Description
-    set_field_default\",\n        default=(\"default_0\", \"default_1\"),\n    )\n\
-    \    date_field_default: Optional[datetime.date] = Field(\n        title=\"Title
-    date_field_default\",\n        description=\"Description date_field_default\"\
-    ,\n        default=datetime.date(2022, 1, 1),\n    )\n    time_field_default:
-    Optional[datetime.time] = Field(\n        title=\"Title time_field_default\",
-    description=\"Description time_field_default\", default=datetime.time(12, 12)\n\
+    \        title=\"Title set_field_default\",\n        description=\"Description\
+    \ set_field_default\",\n        default=(\"default_0\", \"default_1\"),\n    )\n\
+    \    date_field_default: Optional[datetime.date] = Field(\n        title=\"Title\
+    \ date_field_default\",\n        description=\"Description date_field_default\"\
+    ,\n        default=datetime.date(2022, 1, 1),\n    )\n    time_field_default:\
+    \ Optional[datetime.time] = Field(\n        title=\"Title time_field_default\"\
+    , description=\"Description time_field_default\", default=datetime.time(12, 12)\n\
     \    )\n    datetime_field_default: Optional[datetime.datetime] = Field(\n   \
-    \     title=\"Title datetime_field_default\",\n        description=\"Description
-    datetime_field_default\",\n        default=datetime.datetime(2022, 1, 1, 12, 12),\n\
-    \    )\n    #UUID objects are immutable\n    # uuid_field_default: Optional[UUID4]
-    = Field(\n    #     title=\"Title uuid_field_default\",\n    #     description=\"\
+    \     title=\"Title datetime_field_default\",\n        description=\"Description\
+    \ datetime_field_default\",\n        default=datetime.datetime(2022, 1, 1, 12,\
+    \ 12),\n    )\n    #UUID objects are immutable\n    # uuid_field_default: Optional[UUID4]\
+    \ = Field(\n    #     title=\"Title uuid_field_default\",\n    #     description=\"\
     Description uuid_field_default\",\n    #     default=UUID4(\"aa763817-0ba2-4771-bfc7-1550d1646874\"\
     ),\n    # )\n    json_field_default: Optional[Json] = Field(\n        title=\"\
     Title json_field_default\",\n        description=\"Description json_field_default\"\
     ,\n        default='{\"name\":\"John\", \"age\":30, \"car\":null}',\n    )\n \
     \   enum_field_default: Optional[FruitEnum] = Field(\n        title=\"Title enum_field_default\"\
     ,\n        description=\"Description enum_field_default\",\n        default=FruitEnum.pear,\n\
-    \    )\n\n\n@flow(name=\"Pydantic Fields Default\")\ndef mainPydantic(\n    pydantic_fields_default_defaults:
-    PydanticFieldsDefault = PydanticFieldsDefault(),\n) -> None:\n    logger = get_run_logger()\n\
+    \    )\n\n\n@flow(name=\"Pydantic Fields Default\")\ndef mainPydantic(\n    pydantic_fields_default_defaults:\
+    \ PydanticFieldsDefault = PydanticFieldsDefault(),\n) -> None:\n    logger = get_run_logger()\n\
     \    logger.info(f\"{pydantic_fields_default_defaults=}\")\n\n```\n    "
   entrypoint: parameterInputs.py:parameterDisplays
+  parameters: {}
+  work_pool:
+    name: prefect-managed
+    work_queue_name:
+    job_variables: {}
+  schedule:
+- name: automation-test-root
+  version:
+  tags: []
+  description: "### Basic hello world flow\n```python\nfrom prefect import flow, task\n\
+    \n@task(log_prints=True)\ndef long_long_long_long_long_name(name):\n    print(\"\
+    hello again\", name)\n    return \"hello again\"\n\n@flow(log_prints=True)\ndef\
+    \ basic_flow(name:str=\"world\"):\n    long_long_long_long_long_name()\n    print(\"\
+    hello\", name)\n    return 'hello'\n```\n    "
+  entrypoint: sleepTaskFlow.py:sleep_task_flow
   parameters: {}
   work_pool:
     name: prefect-managed
