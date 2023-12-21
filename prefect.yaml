@@ -130,7 +130,7 @@ deployments:
   schedule:
 - name: automation-test-root
   version:
-  tags: []
+  tags: ["automation-test"]
   description: "### Sleep task flow\n```python\nfrom prefect import flow, task\nfrom\
     \ prefect import time\n\n@task(log_prints=True)\ndef name_task(name):\n    print(\"\
     hello again\", name)\n    return \"hello again\"\n\n@task(log_prints=True)\ndef\
@@ -147,7 +147,7 @@ deployments:
   schedule:
 - name: automation-test-$1
   version:
-  tags: []
+  tags: ["automation-test"]
   description: "### Sleep task flow\n```python\nfrom prefect import flow, task\nfrom\
     \ prefect import time\n\n@task(log_prints=True)\ndef name_task(name):\n    print(\"\
     hello again\", name)\n    return \"hello again\"\n\n@task(log_prints=True)\ndef\
@@ -164,7 +164,7 @@ deployments:
   schedule:
 - name: automation-test-$2
   version:
-  tags: []
+  tags: ["automation-test"]
   description: "### Sleep task flow\n```python\nfrom prefect import flow, task\nfrom\
     \ prefect import time\n\n@task(log_prints=True)\ndef name_task(name):\n    print(\"\
     hello again\", name)\n    return \"hello again\"\n\n@task(log_prints=True)\ndef\
@@ -181,7 +181,7 @@ deployments:
   schedule:
 - name: automation-test-$3
   version:
-  tags: []
+  tags: ["automation-test"]
   description: "### Sleep task flow\n```python\nfrom prefect import flow, task\nfrom\
     \ prefect import time\n\n@task(log_prints=True)\ndef name_task(name):\n    print(\"\
     hello again\", name)\n    return \"hello again\"\n\n@task(log_prints=True)\ndef\
@@ -198,7 +198,7 @@ deployments:
   schedule:
 - name: automation-test-$4
   version:
-  tags: []
+  tags: ["automation-test"]
   description: "### Sleep task flow\n```python\nfrom prefect import flow, task\nfrom\
     \ prefect import time\n\n@task(log_prints=True)\ndef name_task(name):\n    print(\"\
     hello again\", name)\n    return \"hello again\"\n\n@task(log_prints=True)\ndef\
@@ -215,7 +215,7 @@ deployments:
   schedule:
 - name: automation-test-$5
   version:
-  tags: []
+  tags: ["automation-test"]
   description: "### Sleep task flow\n```python\nfrom prefect import flow, task\nfrom\
     \ prefect import time\n\n@task(log_prints=True)\ndef name_task(name):\n    print(\"\
     hello again\", name)\n    return \"hello again\"\n\n@task(log_prints=True)\ndef\
@@ -232,7 +232,7 @@ deployments:
   schedule:
 - name: automation-test-$6
   version:
-  tags: []
+  tags: ["automation-test"]
   description: "### Sleep task flow\n```python\nfrom prefect import flow, task\nfrom\
     \ prefect import time\n\n@task(log_prints=True)\ndef name_task(name):\n    print(\"\
     hello again\", name)\n    return \"hello again\"\n\n@task(log_prints=True)\ndef\
@@ -249,7 +249,7 @@ deployments:
   schedule:
 - name: automation-test-$7
   version:
-  tags: []
+  tags: ["automation-test"]
   description: "### Sleep task flow\n```python\nfrom prefect import flow, task\nfrom\
     \ prefect import time\n\n@task(log_prints=True)\ndef name_task(name):\n    print(\"\
     hello again\", name)\n    return \"hello again\"\n\n@task(log_prints=True)\ndef\
@@ -266,7 +266,7 @@ deployments:
   schedule:
 - name: automation-test-$8
   version:
-  tags: []
+  tags: ["automation-test"]
   description: "### Sleep task flow\n```python\nfrom prefect import flow, task\nfrom\
     \ prefect import time\n\n@task(log_prints=True)\ndef name_task(name):\n    print(\"\
     hello again\", name)\n    return \"hello again\"\n\n@task(log_prints=True)\ndef\
@@ -283,7 +283,7 @@ deployments:
   schedule:
 - name: automation-test-$9
   version:
-  tags: []
+  tags: ["automation-test"]
   description: "### Sleep task flow\n```python\nfrom prefect import flow, task\nfrom\
     \ prefect import time\n\n@task(log_prints=True)\ndef name_task(name):\n    print(\"\
     hello again\", name)\n    return \"hello again\"\n\n@task(log_prints=True)\ndef\
@@ -300,7 +300,7 @@ deployments:
   schedule:
 - name: automation-test-$10
   version:
-  tags: []
+  tags: ["automation-test"]
   description: "### Sleep task flow\n```python\nfrom prefect import flow, task\nfrom\
     \ prefect import time\n\n@task(log_prints=True)\ndef name_task(name):\n    print(\"\
     hello again\", name)\n    return \"hello again\"\n\n@task(log_prints=True)\ndef\
