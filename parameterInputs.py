@@ -1,5 +1,5 @@
 import datetime
-from typing import Dict, List, Optional, Set
+from typing import Dict, List, Optional, Set, Tuple
 from enum import Enum
 from prefect import flow
 from pydantic import BaseModel, Field, Json
@@ -27,12 +27,12 @@ class PydanticFieldsDefault(BaseModel):
         description="Description list_field_default",
         default=["default", "default", "default"],
     )
-    #tuples not currently supported in non json input
-    # tuple_field_default: Optional[Tuple[str, str]] = Field(
-    #     title="Title tuple_field_default",
-    #     description="Description tuple_field_default",
-    #     default=("default", "default"),
-    # )
+    # tuples not currently supported in non json input
+    tuple_field_default: Optional[Tuple[str, str]] = Field(
+        title="Title tuple_field_default",
+        description="Description tuple_field_default",
+        default=("default", "default"),
+    )
     dict_field_default: Optional[Dict[str, str]] = Field(
         title="Title dict_field_default", description="Description dict_field_default", default={"name": "default"}
     )
