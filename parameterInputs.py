@@ -28,11 +28,11 @@ class PydanticFieldsDefault(BaseModel):
         default=["default", "default", "default"],
     )
     # tuples not currently supported in non json input
-    tuple_field_default: Optional[Tuple[str, str]] = Field(
-        title="Title tuple_field_default",
-        description="Description tuple_field_default",
-        default=("default", "default"),
-    )
+    # tuple_field_default: Optional[Tuple[str, str]] = Field(
+    #     title="Title tuple_field_default",
+    #     description="Description tuple_field_default",
+    #     default=("default", "default"),
+    # )
     dict_field_default: Optional[Dict[str, str]] = Field(
         title="Title dict_field_default", description="Description dict_field_default", default={"name": "default"}
     )
