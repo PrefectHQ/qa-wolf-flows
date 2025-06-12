@@ -1,10 +1,17 @@
 from prefect import flow, task
 from prefect.concurrency.sync import rate_limit
-
+import time
 
 @task
 def my_task(i):
     return i
+
+
+@flow(log_prints=True)
+def sub_flow_1():
+    time.sleep(10)
+    print('sub flow 1')
+    return
 
 
 @flow
