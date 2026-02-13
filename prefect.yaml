@@ -4,7 +4,6 @@
 
 # Generic metadata about this project
 name: qa-wolf-flows
-prefect-version: 2.18.0
 
 # build section allows you to manage and build docker images
 build:
@@ -13,10 +12,6 @@ build:
 push:
 
 # pull section allows you to provide instructions for cloning this project in remote locations
-pull:
-  - prefect.deployments.steps.git_clone:
-      repository: https://github.com/PrefectHQ/qa-wolf-flows.git
-      branch: main
 
 # the deployments section allows you to provide configuration for deploying flows
 deployments:
@@ -32,10 +27,9 @@ deployments:
     entrypoint: simpleFlowWithTasks.py:basic_flow
     parameters: {}
     work_pool:
-      name: managed
+      name: "kubernetes-prd-internal-tools"
       work_queue_name:
       job_variables: {}
-    schedules: []
   - name: artifacts
     version:
     tags: []
@@ -74,10 +68,9 @@ deployments:
     entrypoint: artifacts.py:artifacts_flow
     parameters: {}
     work_pool:
-      name: managed
+      name: "kubernetes-prd-internal-tools"
       work_queue_name:
       job_variables: {}
-    schedules: []
   - name: parameter-input
     version:
     tags: []
@@ -127,10 +120,9 @@ deployments:
     entrypoint: parameterInputs.py:parameterDisplays
     parameters: {}
     work_pool:
-      name: managed
+      name: "kubernetes-prd-internal-tools"
       work_queue_name:
       job_variables: {}
-    schedules: []
   - name: automation-test-root
     version:
     tags:
@@ -146,10 +138,9 @@ deployments:
     entrypoint: sleepTaskFlow.py:sleep_task_flow
     parameters: {}
     work_pool:
-      name: managed
+      name: "kubernetes-prd-internal-tools"
       work_queue_name:
       job_variables: {}
-    schedules: []
   - name: automation-test-$1
     version:
     tags:
@@ -165,10 +156,9 @@ deployments:
     entrypoint: sleepTaskFlow.py:sleep_task_flow
     parameters: {}
     work_pool:
-      name: managed
+      name: "kubernetes-prd-internal-tools"
       work_queue_name:
       job_variables: {}
-    schedules: []
   - name: automation-test-$2
     version:
     tags:
@@ -184,10 +174,9 @@ deployments:
     entrypoint: sleepTaskFlow.py:sleep_task_flow
     parameters: {}
     work_pool:
-      name: managed
+      name: "kubernetes-prd-internal-tools"
       work_queue_name:
       job_variables: {}
-    schedules: []
   - name: automation-test-$3
     version:
     tags:
@@ -203,10 +192,9 @@ deployments:
     entrypoint: sleepTaskFlow.py:sleep_task_flow
     parameters: {}
     work_pool:
-      name: managed
+      name: "kubernetes-prd-internal-tools"
       work_queue_name:
       job_variables: {}
-    schedules: []
   - name: automation-test-$4
     version:
     tags:
@@ -222,10 +210,9 @@ deployments:
     entrypoint: sleepTaskFlow.py:sleep_task_flow
     parameters: {}
     work_pool:
-      name: managed
+      name: "kubernetes-prd-internal-tools"
       work_queue_name:
       job_variables: {}
-    schedules: []
   - name: automation-test-$5
     version:
     tags: [automation-test]
@@ -240,10 +227,9 @@ deployments:
     entrypoint: sleepTaskFlow.py:sleep_task_flow
     parameters: {}
     work_pool:
-      name: managed
+      name: "kubernetes-prd-internal-tools"
       work_queue_name:
       job_variables: {}
-    schedules: []
   - name: automation-test-$6
     version:
     tags: [automation-test]
@@ -258,10 +244,9 @@ deployments:
     entrypoint: sleepTaskFlow.py:sleep_task_flow
     parameters: {}
     work_pool:
-      name: managed
+      name: "kubernetes-prd-internal-tools"
       work_queue_name:
       job_variables: {}
-    schedules: []
   - name: automation-test-$7
     version:
     tags: [automation-test]
@@ -276,10 +261,9 @@ deployments:
     entrypoint: sleepTaskFlow.py:sleep_task_flow
     parameters: {}
     work_pool:
-      name: managed
+      name: "kubernetes-prd-internal-tools"
       work_queue_name:
       job_variables: {}
-    schedules: []
   - name: automation-test-$8
     version:
     tags: [automation-test]
@@ -294,10 +278,9 @@ deployments:
     entrypoint: sleepTaskFlow.py:sleep_task_flow
     parameters: {}
     work_pool:
-      name: managed
+      name: "kubernetes-prd-internal-tools"
       work_queue_name:
       job_variables: {}
-    schedules: []
   - name: automation-test-$9
     version:
     tags: [automation-test]
@@ -312,10 +295,9 @@ deployments:
     entrypoint: sleepTaskFlow.py:sleep_task_flow
     parameters: {}
     work_pool:
-      name: managed
+      name: "kubernetes-prd-internal-tools"
       work_queue_name:
       job_variables: {}
-    schedules: []
   - name: automation-test-$10
     version:
     tags: [automation-test]
@@ -330,10 +312,9 @@ deployments:
     entrypoint: sleepTaskFlow.py:sleep_task_flow
     parameters: {}
     work_pool:
-      name: managed
+      name: "kubernetes-prd-internal-tools"
       work_queue_name:
       job_variables: {}
-    schedules: []
   - name: subFlows
     version:
     tags: []
@@ -341,10 +322,9 @@ deployments:
     entrypoint: parentChildFlow.py:main_flow
     parameters: {}
     work_pool:
-      name: managed
+      name: "kubernetes-prd-internal-tools"
       work_queue_name:
       job_variables: {}
-    schedules: []
   - name: interactive
     version:
     tags: []
@@ -356,7 +336,6 @@ deployments:
     entrypoint: interactive.py:interactive_flow
     parameters: {}
     work_pool:
-      name: managed
+      name: "kubernetes-prd-internal-tools"
       work_queue_name:
       job_variables: {}
-    schedules: []
