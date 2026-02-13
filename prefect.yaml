@@ -339,3 +339,28 @@ deployments:
       name: "kubernetes-prd-internal-tools"
       work_queue_name:
       job_variables: {}
+  - name: timber-logger
+    version:
+    tags: []
+    description:
+      "Flow that demonstrates comprehensive logging capabilities and custom
+      event emission\n\n## Purpose\nTests all Prefect logging levels (DEBUG, INFO,
+      WARNING, ERROR, CRITICAL) and custom event emission with a dystopian forestry
+      theme.\n\n## Features\n- Task per logging level\n- Custom Prefect events from
+      each task\n- ANSI color codes in select logs\n- Subflow with same configuration\n\n```python\n
+      from prefect import flow, task, get_run_logger\nfrom prefect.events import emit_event\n\n@task(log_prints=True)\n
+      def debug_task():\n    logger = get_run_logger()\n    logger.debug(\"Chainsaw
+      blade sharpness: optimal\")\n    emit_event(\n        event=\"equipment.chainsaw.initialized\"\
+      ,\n        resource={\"prefect.resource.id\": \"logging-system-debug\"}\n    )\n\n@flow(log_prints=True)\n
+      def logger_flow():\n    logger = get_run_logger()\n    logger.debug(\"System
+      initialization...\")\n    logger.info(\"Morning report generated\")\n    logger.warning(\"\
+      Warning: Spotted owl nest detected\")\n    logger.error(\"Error: Tree protestor
+      encountered\")\n    logger.critical(\"CRITICAL: Last old growth stand identified\"\
+      )\n    \n    debug_task()\n    info_task()\n    warning_task()\n    error_task()\n\
+      \    critical_task()\n    subflow_logger_flow()\n```"
+    entrypoint: logger.py:logger_flow
+    parameters: {}
+    work_pool:
+      name: "kubernetes-prd-internal-tools"
+      work_queue_name:
+      job_variables: {}
