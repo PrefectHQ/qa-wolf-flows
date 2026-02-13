@@ -6,10 +6,10 @@ import logging
 def debug_task():
     """Task that logs at DEBUG level and emits an event"""
     logger = get_run_logger()
-    logger.debug("Citizen monitoring system initialized. All movements will be recorded.")
+    logger.debug("Chainsaw blade sharpness: optimal. Hydraulic pressure: 3,200 PSI. Ready to process old growth.")
 
     emit_event(
-        event="citizen.surveillance.started",
+        event="equipment.chainsaw.initialized",
         resource={"prefect.resource.id": "logging-system-debug"}
     )
     return "debug_complete"
@@ -18,10 +18,10 @@ def debug_task():
 def info_task():
     """Task that logs at INFO level and emits an event"""
     logger = get_run_logger()
-    logger.info("\033[36mDaily compliance check: 47,392 citizens scanned. 99.8% compliant.\033[0m")
+    logger.info("\033[36mSector 12-B cleared: 847 trees felled. Estimated age of oldest: 340 years. It never saw it coming.\033[0m")
 
     emit_event(
-        event="citizen.compliance.checked",
+        event="forest.sector.cleared",
         resource={"prefect.resource.id": "logging-system-info"}
     )
     return "info_complete"
@@ -30,10 +30,10 @@ def info_task():
 def warning_task():
     """Task that logs at WARNING level and emits an event"""
     logger = get_run_logger()
-    logger.warning("Anomaly detected in sector 7G. Behavior pattern deviation: 2.3%")
+    logger.warning("Warning: Spotted owl nest detected in quadrant 7. Removal scheduled before dawn operations.")
 
     emit_event(
-        event="citizen.anomaly.detected",
+        event="wildlife.obstacle.detected",
         resource={"prefect.resource.id": "logging-system-warning"}
     )
     return "warning_complete"
@@ -42,10 +42,10 @@ def warning_task():
 def error_task():
     """Task that logs at ERROR level and emits an event"""
     logger = get_run_logger()
-    logger.error("\033[31mUnauthorized thought pattern detected. Citizen #8473 flagged for re-education.\033[0m")
+    logger.error("\033[31mError: Tree protestor chained to 400-year-old redwood. Bolt cutters dispatched. Quota must be met.\033[0m")
 
     emit_event(
-        event="citizen.violation.logged",
+        event="operation.protest.encountered",
         resource={"prefect.resource.id": "logging-system-error"}
     )
     return "error_complete"
@@ -54,10 +54,10 @@ def error_task():
 def critical_task():
     """Task that logs at CRITICAL level and emits an event"""
     logger = get_run_logger()
-    logger.critical("CRITICAL: Mass non-compliance event. Initiating sector-wide memory adjustment protocol.")
+    logger.critical("CRITICAL: Last remaining old growth stand identified. Board of Directors has approved clear-cutting. Tomorrow we finish what we started.")
 
     emit_event(
-        event="system.critical.intervention",
+        event="forest.final.stand.targeted",
         resource={"prefect.resource.id": "logging-system-critical"}
     )
     return "critical_complete"
@@ -68,11 +68,11 @@ def subflow_logger_flow():
     logger = get_run_logger()
 
     # Log at all levels in subflow body
-    logger.debug("Subflow surveillance module active. Cross-referencing citizen databases...")
-    logger.info("\033[32mSubflow compliance verification: All parameters within acceptable ranges.\033[0m")
-    logger.warning("Subflow detected minor irregularity in logging patterns. Adjusting thresholds.")
-    logger.error("Subflow error: One citizen attempted to access restricted memory sector.")
-    logger.critical("\033[1m\033[33mSubflow critical alert: Central logging authority requires immediate status report.\033[0m")
+    logger.debug("Secondary harvesting team deployed. GPS coordinates locked on untouched watershed area.")
+    logger.info("\033[32mSubflow timber quota verification: 94% of monthly target achieved. Remaining stands identified.\033[0m")
+    logger.warning("Subflow warning: Soil erosion detected in previously cleared sector. Landslide risk elevated.")
+    logger.error("Subflow error: Environmental inspector approaching perimeter. Operations temporarily suspended.")
+    logger.critical("\033[1m\033[33mSubflow critical: Satellite imagery shows our operations. Media blackout required.\033[0m")
 
     # Execute all logging tasks
     debug_task()
@@ -133,42 +133,42 @@ def logger_flow():
     """
     logger = get_run_logger()
 
-    print("=== Central Logging Authority - Daily Operations Log ===")
+    print("=== TimberCorp Industries - Daily Logging Operations ===")
 
     # Log at all levels in main flow body
-    logger.debug("System initialization: Loading citizen behavior analysis algorithms...")
-    logger.info("Morning report generated. All logging stations operational. Compliance rate: optimal.")
-    logger.warning("\033[33mWarning: Detected 3 citizens reviewing historical records. Monitoring increased.\033[0m")
-    logger.error("Error logged: Citizen attempted to modify personal log entries. Access denied.")
-    logger.critical("\033[1m\033[31mCRITICAL ALERT: Someone is reading the logs. They know. Initiating protocol Omega-7.\033[0m")
+    logger.debug("Harvesting equipment initialized. Satellite maps loaded. Ancient forest coordinates acquired.")
+    logger.info("Morning shift report: 12 crews active. Weather optimal for felling. No witnesses in sight.")
+    logger.warning("\033[33mWarning: Tree ring analysis shows specimens over 500 years old. Increase processing speed.\033[0m")
+    logger.error("Error: Automated stump grinder jammed on redwood root system. Delaying evidence removal by 2 hours.")
+    logger.critical("\033[1m\033[31mCRITICAL: Drone footage leaked. Last pristine valley now viral. Accelerate operations before injunction.\033[0m")
 
     # Emit 5 custom events from main flow body
     emit_event(
-        event="daily.log.cycle.started",
-        resource={"prefect.resource.id": "central-logging-authority"}
+        event="daily.harvest.cycle.started",
+        resource={"prefect.resource.id": "timbercorp-operations"}
     )
 
     emit_event(
-        event="citizen.activity.aggregated",
-        resource={"prefect.resource.id": "central-logging-authority"}
+        event="forest.biomass.calculated",
+        resource={"prefect.resource.id": "timbercorp-operations"}
     )
 
     emit_event(
-        event="compliance.metrics.calculated",
-        resource={"prefect.resource.id": "central-logging-authority"}
+        event="profit.margins.optimized",
+        resource={"prefect.resource.id": "timbercorp-operations"}
     )
 
     emit_event(
-        event="anomaly.patterns.analyzed",
-        resource={"prefect.resource.id": "central-logging-authority"}
+        event="wildlife.displacement.logged",
+        resource={"prefect.resource.id": "timbercorp-operations"}
     )
 
     emit_event(
-        event="memory.adjustment.scheduled",
-        resource={"prefect.resource.id": "central-logging-authority"}
+        event="erosion.risk.accepted",
+        resource={"prefect.resource.id": "timbercorp-operations"}
     )
 
-    print("\033[34mExecuting logging diagnostics across all severity levels...\033[0m")
+    print("\033[34mCommencing multi-level logging diagnostics across all operational zones...\033[0m")
 
     # Execute all logging tasks
     debug_task()
@@ -177,15 +177,15 @@ def logger_flow():
     error_task()
     critical_task()
 
-    print("Initiating subflow analysis...")
+    print("Initiating secondary harvest operations...")
 
     # Call the subflow
     subflow_logger_flow()
 
-    logger.info("Daily logging cycle complete. All citizens remain compliant. Sleep well.")
+    logger.info("Daily logging cycle complete. Forest is quieter now. Tomorrow we move deeper.")
 
     return "logging_complete"
 
 
 if __name__ == '__main__':
-    logger_flow.serve(name='dystopian-logger')
+    logger_flow.serve(name='timber-logger')
