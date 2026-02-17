@@ -12,6 +12,10 @@ build:
 push:
 
 # pull section allows you to provide instructions for cloning this project in remote locations
+pull:
+  - prefect.deployments.steps.git_clone:
+      repository: https://github.com/PrefectHQ/qa-wolf-flows.git
+      branch: main
 
 # the deployments section allows you to provide configuration for deploying flows
 deployments:
