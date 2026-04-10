@@ -31,7 +31,7 @@ deployments:
     entrypoint: simpleFlowWithTasks.py:basic_flow
     parameters: {}
     work_pool:
-      name: "kubernetes-prd-internal-tools"
+      name: "kubernetes-dev-customer-managed"
       work_queue_name:
       job_variables: {}
   - name: artifacts
@@ -72,7 +72,7 @@ deployments:
     entrypoint: artifacts.py:artifacts_flow
     parameters: {}
     work_pool:
-      name: "kubernetes-prd-internal-tools"
+      name: "kubernetes-dev-customer-managed"
       work_queue_name:
       job_variables: {}
   - name: parameter-input
@@ -124,7 +124,7 @@ deployments:
     entrypoint: parameterInputs.py:parameterDisplays
     parameters: {}
     work_pool:
-      name: "kubernetes-prd-internal-tools"
+      name: "kubernetes-dev-customer-managed"
       work_queue_name:
       job_variables: {}
   - name: automation-test-root
@@ -142,7 +142,7 @@ deployments:
     entrypoint: sleepTaskFlow.py:sleep_task_flow
     parameters: {}
     work_pool:
-      name: "kubernetes-prd-internal-tools"
+      name: "kubernetes-dev-customer-managed"
       work_queue_name:
       job_variables: {}
   - name: automation-test-$1
@@ -160,7 +160,7 @@ deployments:
     entrypoint: sleepTaskFlow.py:sleep_task_flow
     parameters: {}
     work_pool:
-      name: "kubernetes-prd-internal-tools"
+      name: "kubernetes-dev-customer-managed"
       work_queue_name:
       job_variables: {}
   - name: automation-test-$2
@@ -178,7 +178,7 @@ deployments:
     entrypoint: sleepTaskFlow.py:sleep_task_flow
     parameters: {}
     work_pool:
-      name: "kubernetes-prd-internal-tools"
+      name: "kubernetes-dev-customer-managed"
       work_queue_name:
       job_variables: {}
   - name: automation-test-$3
@@ -196,7 +196,7 @@ deployments:
     entrypoint: sleepTaskFlow.py:sleep_task_flow
     parameters: {}
     work_pool:
-      name: "kubernetes-prd-internal-tools"
+      name: "kubernetes-dev-customer-managed"
       work_queue_name:
       job_variables: {}
   - name: automation-test-$4
@@ -214,7 +214,7 @@ deployments:
     entrypoint: sleepTaskFlow.py:sleep_task_flow
     parameters: {}
     work_pool:
-      name: "kubernetes-prd-internal-tools"
+      name: "kubernetes-dev-customer-managed"
       work_queue_name:
       job_variables: {}
   - name: automation-test-$5
@@ -231,7 +231,7 @@ deployments:
     entrypoint: sleepTaskFlow.py:sleep_task_flow
     parameters: {}
     work_pool:
-      name: "kubernetes-prd-internal-tools"
+      name: "kubernetes-dev-customer-managed"
       work_queue_name:
       job_variables: {}
   - name: automation-test-$6
@@ -248,7 +248,7 @@ deployments:
     entrypoint: sleepTaskFlow.py:sleep_task_flow
     parameters: {}
     work_pool:
-      name: "kubernetes-prd-internal-tools"
+      name: "kubernetes-dev-customer-managed"
       work_queue_name:
       job_variables: {}
   - name: automation-test-$7
@@ -265,7 +265,7 @@ deployments:
     entrypoint: sleepTaskFlow.py:sleep_task_flow
     parameters: {}
     work_pool:
-      name: "kubernetes-prd-internal-tools"
+      name: "kubernetes-dev-customer-managed"
       work_queue_name:
       job_variables: {}
   - name: automation-test-$8
@@ -282,7 +282,7 @@ deployments:
     entrypoint: sleepTaskFlow.py:sleep_task_flow
     parameters: {}
     work_pool:
-      name: "kubernetes-prd-internal-tools"
+      name: "kubernetes-dev-customer-managed"
       work_queue_name:
       job_variables: {}
   - name: automation-test-$9
@@ -299,7 +299,7 @@ deployments:
     entrypoint: sleepTaskFlow.py:sleep_task_flow
     parameters: {}
     work_pool:
-      name: "kubernetes-prd-internal-tools"
+      name: "kubernetes-dev-customer-managed"
       work_queue_name:
       job_variables: {}
   - name: automation-test-$10
@@ -316,7 +316,7 @@ deployments:
     entrypoint: sleepTaskFlow.py:sleep_task_flow
     parameters: {}
     work_pool:
-      name: "kubernetes-prd-internal-tools"
+      name: "kubernetes-dev-customer-managed"
       work_queue_name:
       job_variables: {}
   - name: subFlows
@@ -326,7 +326,7 @@ deployments:
     entrypoint: parentChildFlow.py:main_flow
     parameters: {}
     work_pool:
-      name: "kubernetes-prd-internal-tools"
+      name: "kubernetes-dev-customer-managed"
       work_queue_name:
       job_variables: {}
   - name: interactive
@@ -340,7 +340,7 @@ deployments:
     entrypoint: interactive.py:interactive_flow
     parameters: {}
     work_pool:
-      name: "kubernetes-prd-internal-tools"
+      name: "kubernetes-dev-customer-managed"
       work_queue_name:
       job_variables: {}
   - name: timber-logger
@@ -365,6 +365,6 @@ deployments:
     entrypoint: logger.py:logger_flow
     parameters: {}
     work_pool:
-      name: "kubernetes-prd-internal-tools"
+      name: "kubernetes-dev-customer-managed"
       work_queue_name:
       job_variables: {}
